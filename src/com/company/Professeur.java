@@ -19,8 +19,8 @@ public class Professeur extends APersonne implements Enseignent{
         this.nummerSomme = 0;
         this.cours = new HashMap<String, ArrayList<Module>>(4);
     }
-    public Professeur(String n, String em, int nbr, String grd, HashMap<String, ArrayList<Module>> c, ArrayList<Doctorant> docs) {
-        super(n, em);
+    public Professeur(String n, String em, String password, int nbr, String grd, HashMap<String, ArrayList<Module>> c, ArrayList<Doctorant> docs) {
+        super(n, em, password);
         if (grd.compareTo("PA") != 0 && grd.compareTo("PH") != 0 && grd.compareTo("PES") != 0)
             System.out.println("eroor name of grade");
         else

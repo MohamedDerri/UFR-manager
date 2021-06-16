@@ -1,5 +1,8 @@
 package com.company;
 
+import Dao.connexion;
+import views.SignIn;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,13 +12,16 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        ArrayList<Module> modshafidi = new ArrayList<>(4);
+        connexion dao = new connexion();
+        ArrayList<Etudiant> list = new ArrayList<>();
+        dao.readDataBase(list);
+        /*ArrayList<Module> modshafidi = new ArrayList<>(4);
         HashMap<String, ArrayList<Module>> hashHafidi = new HashMap<>();
         ArrayList<Doctorant> docs = new ArrayList<>();
 //        ArrayList<Module> modsdergham = new ArrayList<>(4);
 //        ArrayList<Module> modssaadi = new ArrayList<>(4);
 //
-        Professeur hafidi = new Professeur("hafidi", "hafidi@gmail.cm", 1000,"PES", hashHafidi, docs);
+        Professeur hafidi = new Professeur("hafidi", "hafidi@gmail.cm", "kakaka", 1000,"PES", hashHafidi, docs);
 //        Professeur dargham = new Professeur("dergham", "dergham@gmail.cm", 1000,"PH", modsdergham);
 //        Professeur saadi = new Professeur("saadi", "saadi@gmail.cm", 1000,"PA", modssaadi);
 //
@@ -35,8 +41,11 @@ public class Main {
 //        saadi.affiche();
         ArrayList<Professeur> encad = new ArrayList<>();
         encad.add(hafidi);
-        Date inscDate = new Date(2019 - 1900, 1, 1);
-        Doctorant doc = new Doctorant("yass", 10, "hdjbdjc", "bbd", encad, modshafidi, inscDate);
+        Date inscDate = new Date(2019 - 1900, 1, 1);*/
+        //Doctorant doc = new Doctorant("yass", 10, "hdjbdjc", "bbd", encad, modshafidi, inscDate);
+        SignIn form = new SignIn();
+        form.initForm(1000, 200);
+        form.actionForm(list, dao);
 
     }
 }

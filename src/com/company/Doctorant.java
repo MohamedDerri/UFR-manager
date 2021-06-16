@@ -21,31 +21,31 @@ public class Doctorant extends Etudiant implements Enseignent {
         this.cours = new ArrayList<Module>(2);
     }
 
-    public Doctorant(String n, int id, String em, String sujectThese, ArrayList<Professeur> encad, ArrayList<Module> mod, Date dateInscription) {
-        super(n, id, em);
+    public Doctorant(String n, int id, String em, String password, String sujectThese, ArrayList<Professeur> encad, ArrayList<Module> mod, Date dateInscription) {
+        super(n, id, password, em, mod);
         this.dateInscription = dateInscription;
         this.sujetThese = sujectThese;
         if (encad.size() > 2 || encad.size() == 0 || (encad.get(0).getGrade().compareTo("PA") == 0) || (encad.size() == 2 && encad.get(1).getGrade().compareTo("PA") == 0)) {
-            System.out.println("nbr limite des encatrant est 2 et superieur a 0");
+            System.out.println("erreur en encadrants, soit le nombre est depassé soit les encadrants sont de grade PA");
             this.encadrant = null;
         }
         else
             this.encadrant = encad;
         if (mod.size() > 2 || mod.size() == 0)
         {
-            System.out.println("nbr module limite est 2 sup a 0");
+            System.out.println("nombre limite de module est deux");
             this.cours = null;
         }
         else
             this.cours = mod;
         Date now = new Date(System.currentTimeMillis());
         long diff = now.getTime() - dateInscription.getTime();
-        int nbranne = (int)(diff/(1000*60*60*24*30*12));
-        if (this.cours.size() != 0 && nbranne < 2) {
-            System.out.println("error doc ne peut pas enseigner si ces annes dans le service < 2");
+        int nbrannee = (int)(diff/(1000*60*60*24*30*12));
+        if (this.cours.size() != 0 && nbrannee < 2) {
+            System.out.println("n'est pas encore capable d'enseigner");
         }
         else
-            System.out.println("doc peut enseignier");
+            System.out.println("doctorant est capable d'enseigner");
     }
     @Override
     public double getChargeHoraire() {
@@ -81,8 +81,8 @@ public class Doctorant extends Etudiant implements Enseignent {
         super.setNom(nom);
     }
     @Override
-    public void setNumberetudiant(int numberetudiant) {
-        super.setNumberetudiant(numberetudiant);
+    public void setNumEtudiant(int numberetudiant) {
+        super.setNumEtudiant(numberetudiant);
     }
     @Override
     public void setEmail(String email) {
